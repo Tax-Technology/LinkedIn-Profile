@@ -1,1 +1,30 @@
-streamlit
+Yes—those two flows capture the distinction we need. In brief:
+
+⸻
+
+Scenario 1 (Lookup Consumed Offshore)
+	1.	A foreign client of Sinch sends an A2P/SMS destined for the Philippines.
+	2.	Sinch’s foreign system calls Syn PH’s QNPDB in Makati/Clark to retrieve the correct LRN.
+	3.	The QNPDB response is returned directly to Sinch’s servers abroad (no intermediate Philippine hand‑off).
+	4.	Sinch then uses that LRN—on its foreign infrastructure—to route the SMS to the appropriate Philippine operator.
+	5.	The operator delivers the message to the Philippine end‑user.
+
+Key point: The lookup result is consumed entirely in Sinch’s foreign network before any traffic enters a Philippine telco.
+
+⸻
+
+Scenario 2 (Lookup Consumed in PH)
+	1.	A foreign client of Sinch sends an A2P/SMS destined for the Philippines.
+	2.	Sinch’s foreign system queries Syn PH’s QNPDB, but the response is immediately handed off (or kept) within a Philippine‑based gateway/stack.
+	3.	From that Philippine gateway, Syn PH (or a local partner) applies the LRN and delivers the SMS to the correct Philippine operator.
+	4.	The operator then delivers the message to the Philippine end‑user.
+
+Key point: The lookup result is applied (and the routing decision made) within the Philippine network before the SMS reaches the local operator.
+
+⸻
+
+Use these two scenarios to confirm:
+	•	In Scenario 1, “use/consumption” of the lookup happens entirely outside the Philippines (supporting a zero‑rating argument).
+	•	In Scenario 2, the lookup is consumed within the Philippines (making it a domestically taxed service).
+
+Once the technical manager confirms which of these maps to our actual flow, we’ll know whether the lookup truly qualifies as “exported” or must be treated as a Philippine‑sourced/ VATable service.
