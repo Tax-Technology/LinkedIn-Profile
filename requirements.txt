@@ -1,30 +1,22 @@
-Yes—those two flows capture the distinction we need. In brief:
+## Financial Data Storage Requirements Summary
 
-⸻
+### **By Country:**
 
-Scenario 1 (Lookup Consumed Offshore)
-	1.	A foreign client of Sinch sends an A2P/SMS destined for the Philippines.
-	2.	Sinch’s foreign system calls Syn PH’s QNPDB in Makati/Clark to retrieve the correct LRN.
-	3.	The QNPDB response is returned directly to Sinch’s servers abroad (no intermediate Philippine hand‑off).
-	4.	Sinch then uses that LRN—on its foreign infrastructure—to route the SMS to the appropriate Philippine operator.
-	5.	The operator delivers the message to the Philippine end‑user.
+• **Denmark**: 5 years retention + **mandatory backup on EU/EEA server**
+• **Germany**: 10 years retention + GoBD compliance + EU/EEA storage allowed with immediate tax authority access
+• **Luxembourg**: 10 years retention + no strict localization but must ensure immediate authority access
+• **Netherlands**: 7 years retention (10 for real estate) + EU storage permitted
 
-Key point: The lookup result is consumed entirely in Sinch’s foreign network before any traffic enters a Philippine telco.
+### **EMEA Data Center Question:**
 
-⸻
+• **✅ EMEA within EU/EEA is compliant** for all countries
+• **❌ EMEA outside EU/EEA would NOT meet Denmark’s requirements** and creates complexity for others
+• **Recommendation**: Prioritize EU/EEA data centers only
 
-Scenario 2 (Lookup Consumed in PH)
-	1.	A foreign client of Sinch sends an A2P/SMS destined for the Philippines.
-	2.	Sinch’s foreign system queries Syn PH’s QNPDB, but the response is immediately handed off (or kept) within a Philippine‑based gateway/stack.
-	3.	From that Philippine gateway, Syn PH (or a local partner) applies the LRN and delivers the SMS to the correct Philippine operator.
-	4.	The operator then delivers the message to the Philippine end‑user.
+### **Next Steps:**
 
-Key point: The lookup result is applied (and the routing decision made) within the Philippine network before the SMS reaches the local operator.
+• **Denmark has the strictest requirement** (mandatory EU/EEA backup)
+• **Key consideration**: Ensure immediate audit access for all tax authorities
+• **CTIO should verify**: Current backup locations and confirm EU/EEA compliance
 
-⸻
-
-Use these two scenarios to confirm:
-	•	In Scenario 1, “use/consumption” of the lookup happens entirely outside the Philippines (supporting a zero‑rating argument).
-	•	In Scenario 2, the lookup is consumed within the Philippines (making it a domestically taxed service).
-
-Once the technical manager confirms which of these maps to our actual flow, we’ll know whether the lookup truly qualifies as “exported” or must be treated as a Philippine‑sourced/ VATable service.
+**Bottom line**: EU/EEA data centers are compliant, but avoid non-EU EMEA locations due to Denmark’s explicit restrictions.​​​​​​​​​​​​​​​​
